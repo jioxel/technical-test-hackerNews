@@ -8,13 +8,14 @@ const TopStories = () => {
     useEffect(() => {
     const storiesResponce = async () => {
       const data: number[] = await getTopStories(2, 10)
+      console.log('data')
       setStories(data)
     }
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     storiesResponce()
   }, [])
   return (
-    <ul>
+    <ol>
       {stories?.map(storie => {
       return (
       <li key={storie}>
@@ -23,7 +24,7 @@ const TopStories = () => {
       )
       }
       )}
-    </ul>
+    </ol>
   )
 }
 export default TopStories
