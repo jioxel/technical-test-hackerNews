@@ -3,6 +3,8 @@ import { Article } from '../models/Stories'
 import { getItemInfo } from '../services/hacker-news'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { MyLoader } from './SkeletorNote'
+
 const Story = ({ id }: { id: number }) => {
      const [article, setArticle] = useState<Article | null>(null)
   useEffect(() => {
@@ -14,14 +16,15 @@ const Story = ({ id }: { id: number }) => {
      articleResponce(id)
    }, [])
 
-     const domain = article?.url == null ? '' : `(${new URL(article.url).hostname.replace('www.', '')})`
-  return (
+     const domain = article?.url == null ? '' : new URL(article.url).hostname.replace('www.', '')
+
+     return (
      <>
      {article == null
-     ? <article>Loading</article>
+     ? <MyLoader />
      : <ArticleContent>
           <Header>
-               <A1 href={domain}>{article?.title}</A1>
+               <A1 href={`/details/${article.id}`}>{article?.title}</A1>
                <A2 href={domain}> {domain} </A2>
           </Header>
           <footer>
