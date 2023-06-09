@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Article } from '../models/Stories'
 import { getItemInfo } from '../services/hacker-news'
 import { MyLoader } from '../components/SkeletorNote'
+import ListComets from '../components/ListComets'
 
 const Details = () => {
      const { id } = useParams<string>()
@@ -36,6 +37,7 @@ const Details = () => {
                <Link style={{ textDecoration: 'none', color: '#e3d2d2', fontSize: '11px', fontFamily: 'Arial' }} to={`/details/${article.id}`}>by {article.by}  |</Link>
                <Link style={{ textDecoration: 'none', color: '#cdcdcd', fontSize: '11px', fontFamily: 'Arial' }} to={`/details/${article.id}`}>  {article.by}  |</Link>
                <Link style={{ textDecoration: 'none', color: '#cdcdcd', fontSize: '11px', fontFamily: 'Arial' }} to={`/details/${article.id}`}>  {article.kids?.length ?? 0}</Link>
+               <ListComets comets={article.kids} />
           </footer>
           {}
        </ArticleContent>}
