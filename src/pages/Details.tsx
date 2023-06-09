@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom'
 
 const Details = () => {
      const { id } = useParams()
-     console.log(id)
   return (
      <main>
-          <Div> NW </Div>
+          <Div> {id} </Div>
      </main>
 
   )
