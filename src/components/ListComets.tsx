@@ -6,7 +6,7 @@ const ListComets = ({ commets }: { commets: number[] | undefined }) => {
   return (
     <ul>
         {commets !== undefined
-        ? commets.map(commet => <li key={commet}> <Commet id={commet} /> </li>)
+        ? commets.map(commet => <li style={{ listStyle: 'none' }} key={commet}> <Commet id={commet} /> </li>)
         : 'Sin comentarios'}
 
     </ul>
@@ -24,5 +24,19 @@ const Commet = ({ id }: { id: number }) => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     commentResponce()
   }, [])
-  return <p>{comment === null ? <MyLoader /> : comment?.text}</p>
+  return (
+    <div>{comment === null
+    ? <MyLoader />
+    : <details open>
+        <summary>
+          <span>{comment?.by}</span>
+          <span> - </span>
+          <span>{comment?.time}</span>
+        </summary>
+          <p> {comment?.text} </p>
+
+      </details>}
+      {comment?.kids?.length !== undefined && <ListComets commets={comment.kids} />}
+    </div>
+  )
 }
