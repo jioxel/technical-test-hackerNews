@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+
 import { getTopStories } from '../services/hacker-news'
 import Story from '../components/Story'
 
@@ -8,7 +8,6 @@ const TopStories = () => {
     useEffect(() => {
     const storiesResponce = async () => {
       const data: number[] = await getTopStories(2, 10)
-      console.log('data')
       setStories(data)
     }
     // eslint-disable-next-line @typescript-eslint/no-floating-promises

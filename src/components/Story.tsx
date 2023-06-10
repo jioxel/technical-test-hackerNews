@@ -17,7 +17,7 @@ const Story = ({ id }: { id: number }) => {
    }, [])
 
      const domain = article?.url == null ? '' : new URL(article.url).hostname.replace('www.', '')
-
+   console.log(article)
      return (
      <>
      {article == null

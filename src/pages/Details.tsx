@@ -24,6 +24,7 @@ const Details = () => {
          }
        }
       }, [])
+
   return (
      <main>
      <>
@@ -37,7 +38,7 @@ const Details = () => {
                <Link style={{ textDecoration: 'none', color: '#e3d2d2', fontSize: '11px', fontFamily: 'Arial' }} to={`/details/${article.id}`}>by {article.by}  |</Link>
                <Link style={{ textDecoration: 'none', color: '#cdcdcd', fontSize: '11px', fontFamily: 'Arial' }} to={`/details/${article.id}`}>  {article.by}  |</Link>
                <Link style={{ textDecoration: 'none', color: '#cdcdcd', fontSize: '11px', fontFamily: 'Arial' }} to={`/details/${article.id}`}>  {article.kids?.length ?? 0}</Link>
-               <ListComets comets={article.kids} />
+               <ListComets commets={article.kids?.slice(0, 10)} />
           </footer>
           {}
        </ArticleContent>}
@@ -47,11 +48,6 @@ const Details = () => {
   )
 }
 export default Details
-const Div = styled.div`
-width:100px;
-height:200px;
-background-color:red;
-`
 
 const ArticleContent = styled.article`
 margin: 8px 0;
@@ -63,23 +59,10 @@ align-items: center;
 gap: 20px;
 
 `
-const H2 = styled.h2`
-font-size: 16px;
-font-weight:100;
-`
 const A1 = styled.a`
 font-family: Arial, Helvetica, sans-serif;
 font-size:14px;
 color: #cdcdcd;
 text-decoration: none;
 margin: 5px, 0;
-`
-const A2 = styled.a`
-font-family: Arial, Helvetica, sans-serif;
-font-size:11px;
-color: #cdcdcd;
-text-decoration: none;
-`
-const P = styled.p`
-margin:0;
 `
